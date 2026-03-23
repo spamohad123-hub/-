@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Group Partition Simulator</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    textarea, input { width: 100%; margin-bottom: 10px; padding: 8px; }
+    button { padding: 10px 15px; margin-top: 10px; cursor: pointer; }
+    .section { margin-top: 20px; }
+    .partition { margin-bottom: 5px; }
+    pre { background: #f4f4f4; padding: 10px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+
+  <h1>Group Partition Simulator</h1>
+
+  <div class="section">
+    <label>Number of people (N):</label>
+    <input type="number" id="numPeople" value="7" min="1" />
+
+    <label>Choices (one line per person, format: person: a,b,c):</label>
+    <textarea id="choicesInput" rows="10">1: 2,3,4
+2: 3,4,5
+3: 4,5,6
+4: 5,6,7
+5: 6,7,1
+6: 7,1,2
+7: 1,2,3</textarea>
+
+    <button onclick="runSimulation()">Run</button>
+  </div>
+
+  <div class="section">
+    <h2>Results</h2>
+    <div id="output"></div>
+  </div>
+
+<script>
+function parseChoices(input) {
+  const choices = {};
+  const lines = input.trim().split('\n');
+
+  lines.forEach(line => {
+    const [left, right] = line.split(':');
+    if (!left || !right) return;
+
+    const person = parseInt(left.trim());
+    const picks = right.split(',').map(x => parseInt(x.trim())).filter(x => !isNaN(x));
+    choices[person] = picks;
+  });
+
+  return choices;
+}
+
+function generatePartitions(arr) {
+  if (arr.length === 0) return [[]];
+
+  const first = arr[0];
+  const restPartitions = generatePartitions(arr.slice(1));
+  const result = [];
+
+  restPartitions.forEach(partition => {
+    // Add to existing groups
+    for (let i = 0; i < partition.length; i++) {
+      const newPartition = partition.map(g => [...g]);
+      newPartition[i].unshift(first);
+      result.push(newPartition);
+    }
+
+    // Add as new group
+    result.push([[first], ...partition]);
+  });
+
+  return result;
+}
+
+function isValidPartition(partition, choices) {
+  for (const group of partition) {
+    for (const person of group) {
+      const picks = choices[person] || [];
+      const valid = picks.some(friend => group.includes(friend));
+      if (!valid) return false;
+    }
+  }
+  return true;
+}
+
+function normalizePartition(partition) {
+  const sortedGroups = partition.map(g => [...g].sort((a,b)=>a-b));
+  sortedGroups.sort((a,b)=>a[0]-b[0]);
+  return sortedGroups;
+}
+
+function runSimulation() {
+  const N = parseInt(document.getElementById("numPeople").value);
+  const choicesInput = document.getElementById("choicesInput").value;
+  const outputDiv = document.getElementById("output");
+
+  const choices = parseChoices(choicesInput);
+  const people = Array.from({length: N}, (_, i) => i + 1);
+
+  let partitions = generatePartitions(people);
+  let validPartitions = [];
+  let seen = new Set();
+
+  partitions.forEach(p => {
+    if (isValidPartition(p, choices)) {
+      const norm = normalizePartition(p);
+      const key = JSON.stringify(norm);
+      if (!seen.has(key)) {
+        seen.add(key);
+        validPartitions.push(norm);
+      }
+    }
+  });
+
+  // Count patterns
+  const patternCounts = {};
+
+  validPartitions.forEach(p => {
+    const sizes = p.map(g => g.length).sort((a,b)=>b-a);
+    const key = JSON.stringify(sizes);
+    patternCounts[key] = (patternCounts[key] || 0) + 1;
+  });
+
+  // Render output
+  let html = `<h3>Total valid groupings: ${validPartitions.length}</h3>`;
+
+  html += `<h3>All Valid Partitions</h3><pre>`;
+  validPartitions.forEach(p => {
+    html += p.map(g => `(${g.join(", ")})`).join(" ") + "\n";
+  });
+  html += `</pre>`;
+
+  html += `<h3>Summary</h3><ul>`;
+  Object.keys(patternCounts).forEach(key => {
+    const count = patternCounts[key];
+    const percent = ((count / validPartitions.length) * 100).toFixed(2);
+    html += `<li>${key}: ${count} (${percent}%)</li>`;
+  });
+  html += `</ul>`;
+
+  outputDiv.innerHTML = html;
+}
+</script>
+
+</body>
+</html>
