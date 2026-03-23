@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Partition Simulator&lt;/title&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Inter', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #f5f7fb;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #333;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.container {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width: 1000px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: auto;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>h1 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: white;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 2px 8px rgba(0,0,0,0.08);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.people-grid {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.person-box {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #fafafa;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.person-box h3 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>input {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid #ccc;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>button {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px 15px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #4a90e2;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-right: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>button:hover {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #357bd8;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>pre {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #f0f0f0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>overflow-x: auto;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h1&gt;Group Partition Simulator&lt;/h1&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;label&gt;Number of people:&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="number" id="numPeople" value="7" min="4" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;br&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button onclick="generateInputs()"&gt;Generate Inputs&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button id="recommendedBtn" onclick="fillRecommended()"&gt;Fill Anchor Strategy&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Define Choices&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="peopleContainer" class="people-grid"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button onclick="runSimulation()"&gt;Run Simulation&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Results&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="output"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">let N = 7;</p>
+<p class="p2"><br></p>
+<p class="p1">function generateInputs() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>N = parseInt(document.getElementById("numPeople").value);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const container = document.getElementById("peopleContainer");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>container.innerHTML = "";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>for (let i = 1; i &lt;= N; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const div = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>div.className = "person-box";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>div.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h3&gt;Person ${i}${i &lt;= 3 ? " (Anchor)" : ""}&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;input placeholder="Pick 1" id="p${i}a" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;input placeholder="Pick 2" id="p${i}b" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;input placeholder="Pick 3" id="p${i}c" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>container.appendChild(div);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// NEW: Dynamically generates the Anchor Strategy for any N &gt;= 4</p>
+<p class="p1">function fillRecommended() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>for (let i = 1; i &lt;= N; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let picks = [];</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// The three anchors cross-reference each other, and use Person 4 as their 3rd pick</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (i === 1) picks = [2, 3, 4];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>else if (i === 2) picks = [1, 3, 4];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>else if (i === 3) picks = [1, 2, 4];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Everyone else points all their choices at the three Anchors</p>
+<p class="p1"><span class="Apple-converted-space">    </span>else picks = [1, 2, 3];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById(`p${i}a`).value = picks[0];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById(`p${i}b`).value = picks[1];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById(`p${i}c`).value = picks[2];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function getChoices() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const choices = {};</p>
+<p class="p1"><span class="Apple-converted-space">  </span>for (let i = 1; i &lt;= N; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const a = parseInt(document.getElementById(`p${i}a`).value);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const b = parseInt(document.getElementById(`p${i}b`).value);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const c = parseInt(document.getElementById(`p${i}c`).value);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>choices[i] = [a, b, c].filter(x =&gt; !isNaN(x));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return choices;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function generatePartitions(arr) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (arr.length === 0) return [[]];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const first = arr[0];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const rest = generatePartitions(arr.slice(1));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const result = [];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>rest.forEach(partition =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>for (let i = 0; i &lt; partition.length; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const newPartition = partition.map(g =&gt; [...g]);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>newPartition[i].unshift(first);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>result.push(newPartition);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>result.push([[first], ...partition]);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return result;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function isValidPartition(partition, choices) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>for (const group of partition) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>for (const person of group) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const picks = choices[person] || [];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const valid = picks.some(friend =&gt; group.includes(friend));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!valid) return false;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return true;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function normalizePartition(partition) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const sortedGroups = partition.map(g =&gt; [...g].sort((a,b)=&gt;a-b));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>sortedGroups.sort((a,b)=&gt;a[0]-b[0]);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return sortedGroups;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function runSimulation() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const choices = getChoices();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const people = Array.from({length: N}, (_, i) =&gt; i + 1);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>let partitions = generatePartitions(people);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let validPartitions = [];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let seen = new Set();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>partitions.forEach(p =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (isValidPartition(p, choices)) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const norm = normalizePartition(p);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const key = JSON.stringify(norm);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!seen.has(key)) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>seen.add(key);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>validPartitions.push(norm);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const patternCounts = {};</p>
+<p class="p1"><span class="Apple-converted-space">  </span>validPartitions.forEach(p =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const sizes = p.map(g =&gt; g.length).sort((a,b)=&gt;b-a);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const key = JSON.stringify(sizes);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>patternCounts[key] = (patternCounts[key] || 0) + 1;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>let html = `&lt;h3&gt;Total valid groupings: ${validPartitions.length}&lt;/h3&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>html += `&lt;h3&gt;All Valid Partitions&lt;/h3&gt;&lt;pre&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>validPartitions.forEach(p =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>html += p.map(g =&gt; `(${g.join(", ")})`).join(" ") + "\n";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>html += `&lt;/pre&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>html += `&lt;h3&gt;Summary&lt;/h3&gt;&lt;ul&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>Object.keys(patternCounts).forEach(key =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const count = patternCounts[key];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const percent = ((count / validPartitions.length) * 100).toFixed(2);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>html += `&lt;li&gt;${key}: ${count} (${percent}%)&lt;/li&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>html += `&lt;/ul&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById("output").innerHTML = html;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// Initialize with default inputs</p>
+<p class="p1">generateInputs();</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
